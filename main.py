@@ -1,3 +1,6 @@
+import random
+import math
+
 hours = 0
 t ={}
 count = {}
@@ -13,6 +16,12 @@ for i in q:
 
 
 print(types)
+def time_fuel(fuel_amount, time_start):
+    fuel_amount = math.ceil(fuel_amount)
+    time_to_tuck = fuel_amount / 10 + random.randint(-1,1)
+    total_time = time_start + time_to_tuck
+    return(total_time)
+
 minutes = 0
 hours = 0
 
@@ -33,7 +42,8 @@ while hours != 24:
         elif len(hours) < 2:
             hours = str(hours)
             hours = '0' + hours
-        print(hours, ':', minutes, sep ='')
+        all_keys_time = str(hours) + ':' + str(minutes)
+        print(all_keys_time)
         minutes = int(minutes)
         hours = int(hours)
 
