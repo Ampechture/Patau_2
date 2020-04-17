@@ -38,6 +38,7 @@ for col in azs:
     print(t)
     lst.add(*t)
     azs[n] = tuple(lst)
+
 print(azs)
 # print(types)
 
@@ -48,22 +49,21 @@ def time_fuel(fuel_amount, time_start):
     return (total_time)
 
 
-def slv(types):  # создаем словарь по времени
-    for boops in types:
-        cal[(types[boops])[0]] = ((types[boops])[1], (types[boops])[2])
+for boops in types:
+     cal[(types[boops])[0]] = ((types[boops])[1], (types[boops])[2])
 
-    for pineapple in cal:
-        "shaitan = time_fuel((cal[pineapple])[1], pineapple)"
-        strt[pineapple] = (pineapple, (cal[pineapple])[1], (cal[pineapple])[0])
+for pineapple in cal:
+     "shaitan = time_fuel((cal[pineapple])[1], pineapple)"
+    strt[pineapple] = (pineapple, (cal[pineapple])[1], (cal[pineapple])[0])
 
-    print(strt)
+print(strt)
 
-    for ta in cal:
-        turn[ta] = (ta, (cal[ta])[1])
+for ta in cal:
+    turn[ta] = (ta, (cal[ta])[1])
 
-    for el in types:
-        print(el)
-        out[el] = tuple(cal[in_], in_[in_])
+for el in types:
+    print(el)
+    out[el] = tuple(cal[in_], in_[in_])
 
 
 minutes = 0
