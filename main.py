@@ -13,6 +13,8 @@ oh = {}
 trum = {}
 time = 0
 az = 0
+benz = []
+total_benz_sels = {}
 
 with open('input.txt', 'r', encoding="utf8") as f1:
     q = f1.readlines()
@@ -25,9 +27,17 @@ for i in q:
     i = i.replace('\n', '').split(' ')
     types[time] = i
 
+for dsadas in q:
+    time += 1
+    dsadas = dsadas.replace('\n', '').split(' ')
+    benz.append(int(dsadas[1]))
+total_oil_sell = sum(benz)
+
+
 for col in azd:
     col_ = col.replace('\n', '').split(' ')
     azs[col_[0]] = col_[1:]
+
 
 
 def time_fuel(fuel_amount, time_start):
@@ -75,4 +85,6 @@ list_d.sort()
 f = open('output.txt', 'w')
 for ites in list_d:
     f.write(ites[1]+'\n')
+f.write('------------------------------------------\n')
+f.write(f'Всего проданно бензина - {total_oil_sell} литров')
 f.close()
