@@ -3,23 +3,38 @@ import math
 
 hours = 0
 t = {}
+azs = dict()
 count = {}
 types = {}
 cal = dict()
 turn = dict()
-in_ = dict()
+strt = dict()
 out = dict()
 
 time = 0
+az = 0
+
 with open('input.txt', 'r', encoding="utf8") as f1:
     q = f1.readlines()
+
+with open('azs.txt', 'r', encoding="utf8") as f2:
+    azs = f2.readlines()
 
 for i in q:
     time += 1
     i = i.replace('\n', '').split(' ')
     types[time] = i
 
+for a in azs:
+    az += 1
+    a = a.replace("\n", "").split(' ')
+    print(a)
+    n = int(a[0])
+    o = int(a[1])
+    t = a[2]
+    azs[n] = (t, o)
 
+print(azs)
 # print(types)
 
 def time_fuel(fuel_amount, time_start):
@@ -32,22 +47,19 @@ def time_fuel(fuel_amount, time_start):
 def slv(types):  # создаем словарь по времени
     for boops in types:
         cal[(types[boops])[0]] = ((types[boops])[1], (types[boops])[2])
-    print(cal)
-    return cal
 
+    for pineapple in cal:
+        "shaitan = time_fuel((cal[pineapple])[1], pineapple)"
+        strt[pineapple] = (pineapple, (cal[pineapple])[1], (cal[pineapple])[0])
 
-for pineapple in cal:
-    shaitan = time_fuel((cal[pineapple])[1], pineapple)
-    dict[pineapple] = (pineapple, (cal[pineapple])[2], shaitan)
+    print(strt)
 
+    for ta in cal:
+        turn[ta] = (ta, (cal[ta])[1])
 
-for ta in cal:
-    turn[ta] = (ta, (cal[ta])[2])
-
-
-
-for el in types:
-        out[el] = cal[in_], in_[in_]
+    for el in types:
+        print(el)
+        out[el] = tuple(cal[in_], in_[in_])
 
 
 minutes = 0
