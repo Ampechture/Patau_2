@@ -1,16 +1,16 @@
+# Developed by Kuznetsov.B - 50%, Odoevtsev.S - 25%, Makarov.A - 25%
+
+
+from datetime import timedelta
 import random
 import math
 
-hours = 0
-t = {}
 azs = dict()
-count = {}
 types = {}
 cal = dict()
-turn = dict()
-strt = dict()
-out = dict()
-
+get_away = {}
+oh = {}
+trum = {}
 time = 0
 az = 0
 
@@ -18,79 +18,59 @@ with open('input.txt', 'r', encoding="utf8") as f1:
     q = f1.readlines()
 
 with open('azs.txt', 'r', encoding="utf8") as f2:
-    azs = f2.readlines()
+    azd = f2.readlines()
 
 for i in q:
     time += 1
     i = i.replace('\n', '').split(' ')
     types[time] = i
 
-for col in azs:
-    lst = set()
-    col = str(col)
-    az += 1
-    col_ = list(map(str, col.replace("\n", "").split(" ", maxsplit=2)))
-    print(col_)
-    n = col_[0]
-    o = int(col_[1])
-    t = col_[2].split()
-    lst.add(o)
-    print(t)
-    lst.add(*t)
-    azs[n] = tuple(lst)
+for col in azd:
+    col_ = col.replace('\n', '').split(' ')
+    azs[col_[0]] = col_[1:]
 
-print(azs)
-# print(types)
 
 def time_fuel(fuel_amount, time_start):
-    fuel_amount = math.ceil(fuel_amount)
-    time_to_tuck = fuel_amount / 10 + random.randint(-1, 1)
-    total_time = time_start + time_to_tuck
-    return (total_time)
+    time_to_tuck = math.ceil(fuel_amount / 10) + random.randint(-1, 1)
+    time_star = str(time_start).split(':')
+    itog = timedelta(hours=int(time_star[0]), minutes=int(time_star[1])) + timedelta(minutes=time_to_tuck)
+    if len((str(itog)[:-3].split(':'))[0]) == 1:
+        itog = '0' + str(itog)[:-3]
+        return itog
+    else:
+        return str(itog)[:-3]
 
 
 for boops in types:
-     cal[(types[boops])[0]] = ((types[boops])[1], (types[boops])[2])
+    cal[(types[boops])[0]] = ((types[boops][0]), (types[boops])[1], (types[boops])[2])
 
-for pineapple in cal:
-     "shaitan = time_fuel((cal[pineapple])[1], pineapple)"
-    strt[pineapple] = (pineapple, (cal[pineapple])[1], (cal[pineapple])[0])
+for new_time in cal:
+    get_away[time_fuel(int(cal[new_time][1]), cal[new_time][0])] = cal[new_time]
 
-print(strt)
-
-for ta in cal:
-    turn[ta] = (ta, (cal[ta])[1])
-
-for el in types:
-    print(el)
-    out[el] = tuple(cal[in_], in_[in_])
+for ara in get_away:
+    oh[get_away[ara][0]] = ara
 
 
-minutes = 0
-hours = 0
+def colmun(benz):
+    benz = str(benz).split('-')
+    if int(benz[1]) == 80:
+        return 1
+    if int(benz[1]) == 92:
+        return random.choice([2, 3])
+    else:
+        return 3
 
-while hours != 24:
-    while minutes != 60:
-        minutes += 1
-        if minutes == 60:
-            hours += 1
-            minutes = 0
-            break
-        minutes = str(minutes)
-        hours = str(hours)
-        if len(minutes) < 2 and len(hours) < 2:
-            minutes = '0' + minutes
-            hours = '0' + hours
-        elif len(minutes) < 2:
-            minutes = '0' + minutes
-        elif len(hours) < 2:
-            hours = str(hours)
-            hours = '0' + hours
-        all_keys_time = str(hours) + ':' + str(minutes)
 
-        # print(all_keys_time)
-        minutes = int(minutes)
-        hours = int(hours)
+for run in oh:
+    z = colmun(get_away[oh[run]][2])
+    trum[run] = f'В {run} новый клиент:  {run} {get_away[oh[run]][2]} {get_away[oh[run]][1]} № {z}'
+    trum[oh[
+        run]] = f'В  {oh[run]}  клиент  {run} {get_away[oh[run]][2]} {get_away[oh[run]][1]} ' \
+                f'заправил свой автомобиль и покинул АЗС'
 
-slv(types)
-tablo(cal)
+
+
+list_d = list(trum.items())
+list_d.sort()
+for ites in list_d:
+    print(ites[1])
