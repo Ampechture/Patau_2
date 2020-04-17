@@ -1,6 +1,5 @@
 # Developed by Kuznetsov.B - 50%, Odoevtsev.S - 25%, Makarov.A - 25%
 
-
 from datetime import timedelta
 import random
 import math
