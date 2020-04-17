@@ -26,6 +26,7 @@ for i in q:
     types[time] = i
 
 for col in azs:
+    lst = set()
     col = str(col)
     az += 1
     col_ = list(map(str, col.replace("\n", "").split(" ", maxsplit=2)))
@@ -33,7 +34,10 @@ for col in azs:
     n = col_[0]
     o = int(col_[1])
     t = col_[2].split()
-    azs[n] = (t, o)
+    lst.add(o)
+    print(t)
+    lst.add(*t)
+    azs[n] = tuple(lst)
 print(azs)
 # print(types)
 
