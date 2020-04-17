@@ -25,15 +25,15 @@ for i in q:
     i = i.replace('\n', '').split(' ')
     types[time] = i
 
-for a in azs:
+for col in azs:
+    col = str(col)
     az += 1
-    a = a.replace("\n", "").split(' ')
-    print(a)
-    n = int(a[0])
-    o = int(a[1])
-    t = a[2]
+    col_ = list(map(str, col.replace("\n", "").split(" ", maxsplit=2)))
+    print(col_)
+    n = col_[0]
+    o = int(col_[1])
+    t = col_[2].split()
     azs[n] = (t, o)
-
 print(azs)
 # print(types)
 
