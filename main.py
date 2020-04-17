@@ -7,6 +7,8 @@ count = {}
 types = {}
 cal = dict()
 turn = dict()
+in_ = dict()
+out = dict()
 
 time = 0
 with open('input.txt', 'r', encoding="utf8") as f1:
@@ -34,23 +36,17 @@ def slv(types):  # создаем словарь по времени
     return cal
 
 
-def tablo(cal):  # давим табло что бы оно показывало нам время, но поидее тут будет давиться словарь с въездами
-    in_ = dict()
-    for pineapple in cal:
-        shaitan = time_fuel((cal[pineapple])[1], pineapple)
-        dict[pineapple] = (pineapple, (cal[pineapple])[2], shaitan)
-    return dict
+for pineapple in cal:
+    shaitan = time_fuel((cal[pineapple])[1], pineapple)
+    dict[pineapple] = (pineapple, (cal[pineapple])[2], shaitan)
 
 
-def u_srs(cal):  # недодавил словарь выездов
-    for ta in cal:
-        turn[ta] = (ta, (cal[ta])[2])
+for ta in cal:
+    turn[ta] = (ta, (cal[ta])[2])
 
 
-def ext(cal, in_):  # а здесь все совмещаться в один словарь и потом по циклу принтоваться
-    # норм придумал?
-    out = dict()
-    for el in types:
+
+for el in types:
         out[el] = cal[in_], in_[in_]
 
 
